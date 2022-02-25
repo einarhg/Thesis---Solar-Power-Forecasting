@@ -1,4 +1,9 @@
 \chapter{Introduction\label{cha:introduction}}
+
+Solar power production is extremely dependent on weather conditions \cite{lin_temporal_2020, lee_forecasting_2018, jaidee_very_2019, su_machine_2019, jang_solar_2016}. A single cloud can seriously impact the production of a solar farm. Such unreliability in a power production system is highly undesirable, since production must match demand \cite{lee_forecasting_2018}. When solar power production falls, the power demand it was serving must be fulfilled by other means. Fossil fueled power plants are generally kept on standby, waiting to fulfill this demand \cite{lee_forecasting_2018}. These plants often take hours to start, generally pollute more than other plants and are very expensive to run \cite{lee_forecasting_2018}.
+Reliable and accurate forecasts of the fluctuations in solar power production can give power grid operators notice and insight into future power production \cite{lee_forecasting_2018}. This notice enables planning for the dips in power production and making arrangements into the future. This provides the tools to reduce the cost and pollution of power generation as well as increasing the reliability of power delivery to consumers \cite{lee_forecasting_2018}.
+Recent advancements in deep learning have unlocked new tools that have been shown to be extremely effective in predicting the future behavior of a system given enough relevant data.\\
+
 %% \ifdraft only shows the text in the first argument if you are in draft mode.
 %% These directions will disappear in other modes.
 \ifdraft{State the objectives of the exercise. Ask yourself:
@@ -7,6 +12,18 @@
   solution interesting or novel?}{}
 
 \section{Background}
+
+Recurrent Neural Networks (RNNs), especially Gated Recurrent Units (GRUs) and Long-Short Term Memory (LSTM) cells \cite{Goodfellow-et-al-2016} along with more advanced derivatives have been shown to be able to achieve good results when trained on previous weather and power generation data \cite{lin_temporal_2020, lee_forecasting_2018, jaidee_very_2019, su_machine_2019}.
+RNNs are a class of deep neural networks where nodes are connected in a temporal sequence, allowing the network to learn time based data efficiently. LSTMs and GRUs are types of RNNs in which, the nodes in the network have additional stored states controlled by the network via mechanisms that use time delays or feedback loops \cite{Goodfellow-et-al-2016, noauthor_recurrent_2021}.\\
+Lin et al. \cite{lin_temporal_2020} showed that while the more traditional GRUs and LSTMs show good performance on the task, Temporal Convolutional Neural Networks (TCNN) can show even better performance. \textit{"TCNN is a novel convolutional architecture designed for sequential modelling, which combines causal and dilated convolutions
+and residual connections"} \cite{lin_temporal_2020}. \\
+Jaidee et al. \cite{jaidee_very_2019} showed that for very short term predictions, on the time scale of a few hours, LSTMs, GRUs and derivative methods show relatively similar performance. This timescale is where it is critical to accurately predict cloud movements. 
+These methods have been taken as far as building genetic algorithms to generate the optimal neural network for the purpose \cite{jaidee_very_2019}. These genetic algorithms operate on the same principals as animal breeding. They generate multiple candidate neural networks and use the best networks as a base to generate new networks for the next generation. This is done for multiple generations and in the end the best neural network generated is used \cite{jaidee_very_2019}.\\
+Su et al. \cite{su_machine_2019} did extensive experimentation on more conventional neural networks and newer, less known networks including  Non-linear Auto Regressive Neural Network (NARXNN), as well as various statistical approaches. When predicting power output, NARXNN takes in the current power output values and considers them as well as the past values of the power output of the system. These experiments showed that NARXNN had the best performance of these, by a rather large margin, and a hybrid method, of the better performing methods, showed even better results \cite{anderson_using_2018}. The statistical methods generally performed significantly worse in predicting the power output. \\
+Satellite imagery has been used for predicting solar power output as well. A neural network was trained to predict solar power production, primarily from cloud cover information it learned from these satellite images \cite{jang_solar_2016}.\\
+
+
+
 \ifdraft{Provide background about the subject matter (e.g. How was morse code
 developed?  How is it used today?). 
 This is a place where there are usually many citations.
@@ -20,6 +37,27 @@ If you have specifications or related standards, these must be
 described and cited also.  As an example, you might cite the specific
 RoboSub competition website (and documents) if working on the lighting system for an AUV\cite{guls2016auvlight}
 
+
+\section{Transformers}
+Hard to train
+sequential
+ -> parallelization hard
+encoder/decoder instead. Attention. 
+ Explain enc/dec
+ Autoencoders generate same output as the input, so no labeled data is needed -> completely unsupervisd learning.
+ Locality a problem with CNNs and RNNs. Can easily find local context but keeping on to context far apart in input is difficult. Enter transformers.
+ Encoder reads blocks of data and uses that and previously generated data as inputs into decoder which generatesdata one point at a time.
+ Attention. How you relate things to each other. i.e. input to output
+ self attention. How do features in the input data relate to each other
+
+
+\subsection{Encoder/decoder}
+
+\subsection{Attention}
+ 
+ 
+\section{Goals}
+
 %% Glossary is broken, do not use --foley
 % \gls{auv}\footnote{Autonomous Undersea Vehicle}.
 
@@ -28,36 +66,4 @@ RoboSub competition website (and documents) if working on the lighting system fo
 \index{AUV}
 }{}
 
-\section{Example Section}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.3\textwidth]{ru-logo}
-  \caption[RU Logo]{Reykjavík University Logo, used with permission.}\label{fig:ru-logo}
-\end{figure}
-\begin{table}
-  \centering
-  \begin{tabular}{ll}
-    $x$& $x^{2}$\\
-    1 &1\\
-    2 &4\\
-    3 &9\\
-  \end{tabular}
-  \caption{Table of squared numbers}\label{tab:numbers}
-\end{table}
-There is an RU logo in Figure~\ref{fig:ru-logo}.
-This logo will scale according to the width of the text on the page.
-There is a helpful list of squared numbers in Table~\ref{tab:numbers}.
 
-The test text ``Lorem Ipsum''\index{Lorem Ipsum} is from an ancient text from 45 B.C. \cite{cicero46deFinibus, lipsomwebsite}\\
-\lipsum[1-5]
-\subsection{Subsection}
-\lipsum[6-10]
-\subsubsection{SubSubsection} 
-\lipsum[11-15]
-\section[Section with an extremely long name]{Section with a very very very very very very very very very very very very very very very very very very very very long name}
-\lipsum[11-18]
-
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "DEGREE-NAME-YEAR"
-%%% End: 
