@@ -6,64 +6,88 @@ Recent advancements in deep learning have unlocked new tools that have been show
 
 %% \ifdraft only shows the text in the first argument if you are in draft mode.
 %% These directions will disappear in other modes.
-\ifdraft{State the objectives of the exercise. Ask yourself:
-  \underline{Why} did I design/create the item? What did I aim to
-  achieve? What is the problem I am trying to solve?  How is my
-  solution interesting or novel?}{}
+%\ifdraft{State the objectives of the exercise. Ask yourself:
+%  \underline{Why} did I design/create the item? What did I aim to
+%  achieve? What is the problem I am trying to solve?  How is my
+%  solution interesting or novel?}{}
 
 \section{Background}
 
+\subsection{LSTMs and GRUs}
 Recurrent Neural Networks (RNNs), especially Gated Recurrent Units (GRUs) and Long-Short Term Memory (LSTM) cells \cite{Goodfellow-et-al-2016} along with more advanced derivatives have been shown to be able to achieve good results when trained on previous weather and power generation data \cite{lin_temporal_2020, lee_forecasting_2018, jaidee_very_2019, su_machine_2019}.
 RNNs are a class of deep neural networks where nodes are connected in a temporal sequence, allowing the network to learn time based data efficiently. LSTMs and GRUs are types of RNNs in which, the nodes in the network have additional stored states controlled by the network via mechanisms that use time delays or feedback loops \cite{Goodfellow-et-al-2016, noauthor_recurrent_2021}.\\
+
+%\ifdraft{Provide background about the subject matter (e.g. How was morse code
+%developed?  How is it used today?). 
+%This is a place where there are usually many citations.
+%It is suspicious when there is not.
+%Include the purpose of the different equipment and your design intent. 
+%Include references to relevant scientific/technical work and books.
+%What other examples of similar designs exist?
+%How is your approach distinctive?
+
+%If you have specifications or related standards, these must be
+%described and cited also.  As an example, you might cite the specific
+%RoboSub competition website (and documents) if working on the lighting system for an AUV\cite{guls2016auvlight}
+
+
+\subsection{Transformers}
+%Hard to train
+%sequential
+% -> parallelization hard
+%encoder/decoder instead. Attention. 
+% Explain enc/dec
+% Autoencoders generate same output as the input, so no labeled data is needed -> completely unsupervisd earning.
+% Locality a problem with CNNs and RNNs. Can easily find local context but keeping on to context far apart in input is difficult. Enter transformers.
+ %Encoder reads blocks of data and uses that and previously generated data as inputs into decoder which generatesdata one point at a time.
+ %Attention. How you relate things to each other. i.e. input to output
+ %self attention. How do features in the input data relate to each other
+ 
+ 
+Transformers have been used for a while in Natural Language Processing (NLP) and have more recently been used very effectively in forecasting.\cite{vaswani_attention_2017} They can more effectively learn and preserve local context located far apart in the input data. As an example from NLP, the training data can contain multiple cases where time is being told, far apart. A transformer model would then more easily identify that the word “o’clock” is generally preceded by a number, whereas RNNs would be more likely to struggle with such distributed information. This can be applied to our work as similar weather patterns would reoccur days apart and cause a similar effect on measured irradiance at the power station.
+
+
+\subsubsection{Encoder/decoder}
+Transformers have an encoder/decoder structure. An encoder takes an input sequence and generates an abstract hidden state which the decoder then uses to generate an output sequence. A major advantage of this methodology is that the inputs and outputs do not have to have the same length, where the primary limit of the architecture is that all information in the input sequence needs to be represented by a single vector for the decoder to decode. The encoder distills the input down to a much smaller representation, a bottleneck, only containing desired information which the decoder in turn extracts.This is on its own used for tasks like de-noising or colorizing images. 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[scale=0.5]{imgs/encoder_decoder.jpeg}
+    \caption{https://towardsdatascience.com/what-is-an-encoder-decoder-model-86b3d57c5e1a
+    \label{fig:encoder_decoder}}
+\end{figure}
+
+\subsubsection{Attention} We previously discussed transformers' ability to preserve context across the long input sequences. That is thanks to the attention layer. The attention layer encodes an input data point's relevance to another input. Calling back to the previous NLP example, it encodes the context that the word "o'clock" is relevant to numbers because in most inputs it is preceded by a number.
+ 
+Self-attention
+ 
+Multi-headed attention
+ 
+\subsubsection{Positional encoding}
+
+\subsection{Weather forecasts}
+
+\subsection{Previous work}
 Lin et al. \cite{lin_temporal_2020} showed that while the more traditional GRUs and LSTMs show good performance on the task, Temporal Convolutional Neural Networks (TCNN) can show even better performance. \textit{"TCNN is a novel convolutional architecture designed for sequential modelling, which combines causal and dilated convolutions
 and residual connections"} \cite{lin_temporal_2020}. \\
 Jaidee et al. \cite{jaidee_very_2019} showed that for very short term predictions, on the time scale of a few hours, LSTMs, GRUs and derivative methods show relatively similar performance. This timescale is where it is critical to accurately predict cloud movements. 
 These methods have been taken as far as building genetic algorithms to generate the optimal neural network for the purpose \cite{jaidee_very_2019}. These genetic algorithms operate on the same principals as animal breeding. They generate multiple candidate neural networks and use the best networks as a base to generate new networks for the next generation. This is done for multiple generations and in the end the best neural network generated is used \cite{jaidee_very_2019}.\\
 Su et al. \cite{su_machine_2019} did extensive experimentation on more conventional neural networks and newer, less known networks including  Non-linear Auto Regressive Neural Network (NARXNN), as well as various statistical approaches. When predicting power output, NARXNN takes in the current power output values and considers them as well as the past values of the power output of the system. These experiments showed that NARXNN had the best performance of these, by a rather large margin, and a hybrid method, of the better performing methods, showed even better results \cite{anderson_using_2018}. The statistical methods generally performed significantly worse in predicting the power output. \\
 Satellite imagery has been used for predicting solar power output as well. A neural network was trained to predict solar power production, primarily from cloud cover information it learned from these satellite images \cite{jang_solar_2016}.\\
-
-
-
-\ifdraft{Provide background about the subject matter (e.g. How was morse code
-developed?  How is it used today?). 
-This is a place where there are usually many citations.
-It is suspicious when there is not.
-Include the purpose of the different equipment and your design intent. 
-Include references to relevant scientific/technical work and books.
-What other examples of similar designs exist?
-How is your approach distinctive?
-
-If you have specifications or related standards, these must be
-described and cited also.  As an example, you might cite the specific
-RoboSub competition website (and documents) if working on the lighting system for an AUV\cite{guls2016auvlight}
-
-
-\section{Transformers}
-Hard to train
-sequential
- -> parallelization hard
-encoder/decoder instead. Attention. 
- Explain enc/dec
- Autoencoders generate same output as the input, so no labeled data is needed -> completely unsupervisd learning.
- Locality a problem with CNNs and RNNs. Can easily find local context but keeping on to context far apart in input is difficult. Enter transformers.
- Encoder reads blocks of data and uses that and previously generated data as inputs into decoder which generatesdata one point at a time.
- Attention. How you relate things to each other. i.e. input to output
- self attention. How do features in the input data relate to each other
-
-
-\subsection{Encoder/decoder}
-
-\subsection{Attention}
- 
  
 \section{Goals}
+The methods previously used all have in common that they must effectively predict the weather so they can predict power output. 
+Here we explore whether better prediction accuracy can be reached
+if high quality, high resolution weather forecast data is used. This offloads the difficult task of predicting the weather from the responsibilities of the network. \\
+Can we construct a transformer based neural network which, by utilizing weather forecast data, is superior to neural networks which only utilize historical weather data?\\
+
 
 %% Glossary is broken, do not use --foley
 % \gls{auv}\footnote{Autonomous Undersea Vehicle}.
 
 % Notice that there is now information on the AUV in the Index and Acronyms.
 % It isn't in the \gls{glossary} because we didn't put it there.
-\index{AUV}
-}{}
+%\index{AUV}
+%}{}
 
 

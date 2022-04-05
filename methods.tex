@@ -1,7 +1,23 @@
 \chapter{Methods}
 
-\lipsum[14-20]
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "DEGREE-NAME-YEAR"
-%%% End: 
+
+\section{Data}
+The data used comes from two primary sources
+\subsection{Irradiance measurements}
+\subsection{Forecast Data}
+\subsubsection{Data Source}
+Text\cite{gueymard_global_2008, rognvaldsson_numerical_2013, jimenez_wrf-solar_2016}
+\subsubsection{Forecast Effectiveness}
+\subsection{Error metric}
+
+
+\section{Tools}
+
+For training models we used a computer with an AMD R9 5950X, 32GB RAM and an Nvidia Geforce RTX 3080Ti. This allowed for quick training of models, as with the relatively small amount of data, training a model took 5-10 minutes.
+
+\section{Model}
+    \subsection{Temporal Fusion Transformer}
+    Text \cite{lim_temporal_2020}
+    \subsection{Setup}
+    \subsubsection{Loss function}\label{cha:loss_function}
+    Quantile loss and loss quantiles
