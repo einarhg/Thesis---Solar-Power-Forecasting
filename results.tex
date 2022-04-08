@@ -1,7 +1,7 @@
 \chapter{Results}
 Both models showed a strong ability to predict solar irradiance one day into the future.
-The full model, using weather forecast data from the surrounding area, showed both a lower Mean Absolute Percentage Error (MAPE), at 13.21\% vs. 15.98\%, as well as better tracking in challenging conditions and a better ability to recognize uncertain conditions, generally reporting lower confidence when its predictions were wrong. Both models can be trained to achieve slightly lower MAPE, but that came at the cost of a higher tendency to underfit to variance, and higher false confidence.
-We show irradiance plots for select days representative of the models' performance in various conditions. These plots show the measured irradiance for the day, the models' predicted irradiance values, along with a 90\% confidence interval, detailed in section~\ref{cha:loss_function}. The plots also show the forecast downward shortwave irradiance, the largest factor in measured irradiance, from the model input. Additionally the graphs contain the average MAPE for the day, and the sum of prediction and observation values. The sum values act as a gauge for the total irradiance for the day.
+The full model, using weather forecast data from the surrounding area, showed both a lower Mean Absolute Percentage Error (MAPE), at 13.21\% vs. 15.98\%, as well as better tracking in challenging conditions and a better ability to recognize uncertain conditions, generally reporting lower confidence when its predictions were wrong. Both models can be trained to achieve slightly lower MAPE, but that came at the cost of a higher tendency to underfit variance, and higher false confidence.
+We show irradiance plots for select days representative of the models' performance in various conditions. These plots show the measured irradiance for the day, the models' predicted irradiance values, along with a 90\% confidence interval, detailed in section~\ref{sec:loss_function}. The plots also show the forecast downward shortwave irradiance, the largest factor in measured irradiance, from the model input. Additionally, the graphs contain the average MAPE for the day and the sum of prediction and observation values. The sum values act as a gauge for the total irradiance for the day.
 
 
 \section{Full model}
@@ -17,7 +17,7 @@ The full model, utilizing irradiance data from surrounding areas achieved an ave
 
 
 \subsection{Low variance days}
-In the test dataset there are a number of clear days, where the sun was mostly or entirely unobstructed. The model predicted most of these days with very low error, in the range 2-5\%. The 90\% confidence interval stayed within $\pm100 W/m^2$ for the whole day and the true prediction was almost spot-on, as can be seen in Fig.~\ref{fig:full_low_best}.
+In the test dataset, there are some clear days, where the sun was mostly or entirely unobstructed. The model predicted most of these days with very low error, in the range of 2-5\%. The 90\% confidence interval stayed within $\pm100 W/m^2$ for the whole day and the true prediction was almost spot-on, as can be seen in Fig.~\ref{fig:full_low_best}.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/low/best_3.png}}\qquad
@@ -40,7 +40,7 @@ These predictions were still even and within the 90\% confidence interval, which
 
 \subsection{Medium variance days}
 On days with some variance in the irradiance measured, the model was generally able to predict the irradiance with relatively good accuracy.
-The model has a tendency to give a smoother prediction than the measured value, averaging through the peaks and valleys of the measured values and most of the time the observed value was within the 90\% confidence interval. 
+The model tends to give a smoother prediction than the measured value, averaging through the peaks and valleys of the measured values and most of the time the observed value was within the 90\% confidence interval. 
 
 Fig.~\ref{fig:full_med_best} shows examples of good predictions with high confidence, though the confidence is generally lower the farther the irradiance is from the value of a clear day.
 \begin{figure}[ht!]
@@ -104,7 +104,7 @@ The limited model, utilizing irradiance data only from the one forecast region, 
 
 
 \subsection{Low variance days}
-The model predicts most clear days with relatively high accuracy, but even on the best days it deviates from the quite a bit from the observed values, as shown in Fig.~\ref{fig:less_low_a}. The model sometimes under-predicts on clear days. In Fig.~\ref{fig:less_low_b} we can see an example of a day where, even though the 90\% confidence area is large, the observed irradiance is outside it.
+The model predicts most clear days with relatively high accuracy, but even on the best days, it deviates quite a bit from the observed values, as shown in Fig.~\ref{fig:less_low_a}. The model sometimes under-predicts on clear days. In Fig.~\ref{fig:less_low_b} we can see an example of a day where, even though the 90\% confidence area is large, the observed irradiance is outside it.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/low/low_g_1.png}\label{fig:less_low_a}}\qquad
@@ -112,10 +112,10 @@ The model predicts most clear days with relatively high accuracy, but even on th
     \caption{Examples of model performance on clear days.
     \label{fig:less_low}}
 \end{figure}
-
+poopies manana 
 
 \subsection{Medium variance days}
-The model shows less accuracy when the irradiance is not steady. Predictions for most days have the smooth profile of an optimal day, but are scaled to fit closer to the lower total irradiance for the day. The model is inconsistent in how well it tracks the observed irradiance and the confidence it does that with. Sometimes, as shown in Fig.~\ref{fig:less_med_a} the model tracks relatively well, with the observations mostly within the rather tight 90\% confidence interval of roughly $+50/-150 W/m^2$. In Fig.~\ref{fig:less_med_b} we see an example where the model was wrong with very high confidence for the first half of the day. Fig.~\ref{fig:less_med_c} shows the opposite, the model predicts low irradiance for the whole day with a very large 90\% confidence interval of roughly $\pm200 W/m^2$.
+The model shows less accuracy when the irradiance is not steady. Predictions for most days have the smooth profile of an optimal day but are scaled to fit closer to the lower total irradiance for the day. The model is inconsistent in how well it tracks the observed irradiance and the confidence it does that with. Sometimes, as shown in Fig.~\ref{fig:less_med_a} the model tracks relatively well, with the observations mostly within the rather tight 90\% confidence interval of roughly $+50/-150 W/m^2$. In Fig.~\ref{fig:less_med_b} we see an example where the model was wrong with very high confidence for the first half of the day. Fig.~\ref{fig:less_med_c} shows the opposite, the model predicts low irradiance for the whole day with a very large 90\% confidence interval of roughly $\pm200 W/m^2$.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_g_1.png}\label{fig:less_med_a}}\qquad
