@@ -41,6 +41,8 @@ The results clearly show that relying on forecast irradiance data from meteorolo
 
 We used a dataset of a fairly limited size, only 425 days. A few years of data for training the model would likely yield somewhat better results. The data can be processed more before being input into the network to account for known variables like daily and yearly swings in irradiance, which might improve performance. There exists satellite irradiance measurement data that might be used for improving accuracy. It would be interesting to see if a neural network could extract information from the seven pyranometers scattered across the power station, rather than only dropping the highest and lowest values and taking an average. 
 
+\textcolor{blue}{The model has huge potential in utilizing more data, both a larger time-span and other exogenous data that might further help relate the input forecast to the actual irradiance.}
+
 Sadly, there is not a standard benchmark for solar irradiance forecast models, and the data used by others who have done similar work is not available, so we can't make a proper comparison between methodologies and models. 
 %%% Local Variables: 
 %%% mode: latex
