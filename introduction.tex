@@ -14,8 +14,11 @@ Recent advancements in deep learning have unlocked new tools that have been show
 \section{Background}
 
 \textcolor{red}{TODO: Background on neural networks}\\
+Artificial Neural Networks (ANNs), generally known as just Neural Networks (NNs) were first theorized in the 1940s \cite{citation needed}, though it was much later, in the\\
+NN function\\
 
-\subsection{LSTMs and GRUs}
+
+\subsection{LSTMs and GRUs\label{cha:RNN}}
 Recurrent Neural Networks (RNNs), especially Gated Recurrent Units (GRUs) and Long-Short Term Memory (LSTM) cells \cite{Goodfellow-et-al-2016} along with more advanced derivatives have been shown to be able to achieve good results when trained on previous weather and power generation data \cite{lin_temporal_2020, lee_forecasting_2018, jaidee_very_2019, su_machine_2019}.
 RNNs are a class of deep neural networks where nodes are connected in a temporal sequence, allowing the network to learn time-based data efficiently. LSTMs and GRUs are types of RNNs in which, the nodes in the network have additional stored states controlled by the network via mechanisms that use time delays or feedback loops \cite{Goodfellow-et-al-2016, noauthor_recurrent_2021}.\\
 
@@ -33,7 +36,7 @@ RNNs are a class of deep neural networks where nodes are connected in a temporal
 %RoboSub competition website (and documents) if working on the lighting system for an AUV\cite{guls2016auvlight}
 
 
-\subsection{Transformers}
+\subsection{Transformers\label{cha:transformer}}
 %Hard to train
 %sequential
 % -> parallelization hard
@@ -50,7 +53,7 @@ Transformers have been used for a while in Natural Language Processing (NLP) and
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.7]{imgs/transformer.png}
+    \includegraphics[scale=0.95]{imgs/transformer.png}
     \caption{The transformer architecture.\cite{vaswani_attention_2017}
     \label{fig:transformer}}
 \end{figure}
@@ -63,7 +66,7 @@ Transformers have an encoder/decoder structure. An encoder takes an input sequen
 \begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.5]{imgs/encoder_decoder.jpeg}
-    \caption{The encoder/decoder structure
+    \caption{The encoder/decoder structure \cite{nechu_what_2020}
     \label{fig:encoder_decoder}}
 \end{figure}
 
@@ -72,7 +75,7 @@ Unlike RNNs, the transformer architecture has no recurrence and does inherently 
 
 \subsubsection{Self-attention} We previously discussed transformers' ability to preserve context across the long input sequences. That is thanks to the attention layer. The attention layer encodes an input data point's relevance to the rest of the points in the input sequence. Calling back to the previous NLP example, it encodes the context that the word "o'clock" is relevant to numbers because it is preceded by a number in most inputs.
  
-A single attention head can put all the focus on a single element. Multiple attention heads can be used to let the transformer model consider the context of more elements at the same time.\cite{rohrer_transformers_2021} 
+A single attention head can put all the focus on a single element. Multiple attention heads can be used to let the transformer model consider the context of more elements at the same time \cite{rohrer_transformers_2021}.
 
 \subsection{Weather forecasts}
 \textcolor{red}{TODO}

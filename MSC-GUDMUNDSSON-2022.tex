@@ -46,7 +46,7 @@
 %% icelandic: thesis is in Icelandic
 %% oldstyle:  use the PhD headers and footers from the old CS template
 %% online: for online versions (skip blank pages)
-\documentclass[online,masters,deptscs,forcegraphics,draft]{ruthesis}
+\documentclass[online,masters,deptscs,forcegraphics,final]{ruthesis}
 
 %%%%%%%%%%%%%%%%%%%% TeXStudio Magic Comments %%%%%%%%%%%%%%%%%%%%%
 %% These comments that start with "!TeX" modify the way TeXStudio works
@@ -245,8 +245,8 @@
 %% Bachelors: primary advisor (Umsjónarkennari), ONLY ONE!
 %% All others: As many as you want
 \supervisors{
-  \personinfo{Yngvi Björnsson}{\MLSupervisor}{\MLProfessor}{\MLReykjavikUniversity}{\MLIceland}
-  \personinfo{Ólafur Rögnvaldsson}{Co-advisor}{Managing Director}{Belgingur ehf.}{\MLIceland}
+  \personinfo{Dr. Yngvi Björnsson, PhD}{\MLSupervisor}{\MLProfessor}{\MLReykjavikUniversity}{\MLIceland}
+  \personinfo{Dr. Ólafur Rögnvaldsson, PhD}{Examiner}{Managing Director}{Belgingur ehf.}{\MLIceland}
 %  \personinfo{Ian M. Great}{Co-advisor}{\MLProfessor}{Hochschule Düsseldorf}{Germany}
 }
 
@@ -263,9 +263,15 @@
 %% Note: Icelandic quotation marks cannot be typeset using "` and "'.  You should use \enquote{}
 %% this is probably due to interactions with the MultiLingual macros.
 %% TODO: turn this into more sensible macros to avoid confusion --foley
-\newML{AbstractText}{\lipsum[1]}  
-% ipsum generaes text text
-{\lipsum[1]} % Icelandic abstract goes here
+\newML{AbstractText}{
+The world is moving at increasing speed away from generating electricity using fossil fuels, toward more environmentally friendly options, such as solar power. Solar power production is volatile and highly dependent on weather conditions, primarily cloud cover. Instability and unpredictability are undesirable in power production since production must match demand. In order to ensure power availability, highly polluting and expensive fossil power stations, \enquote{peaker plants}, are kept on standby to react to the instability in solar power. The ability to reliably predict solar power production provides more predictability to power grid operators, allowing for greater efficiency in grid operation. 
+Valuable data exists in weather forecasts, which can be harnessed to increase predictability in solar power generation. We use novel deep learning methods, attention, and specifically Temporal Fusion Transformers, to forecast the irradiance at a solar power station, which correlates very strongly with power output. We base this on Belgingur ehf.'s high-resolution weather forecast data, the 24-hour forecast irradiance values for the area of the power station.
+Our model achieves a very low average Mean Absolute Percentage Error of 13.21\% on the test dataset for one-day forecasts. In addition, the model outputs a confidence level for its predictions providing insight to a grid operator on whether to expect unpredictability in the power output. The model is able to generate more accurate predictions when utilizing forecast data from a wider area around the power station than exclusively data from the power station‘s immediate vicinity.
+
+}  
+{
+Íslenska!
+} % Icelandic abstract goes here
 \setAbstract{\MLAbstractText}
 
 
@@ -294,6 +300,7 @@
 %% \usepackage{hypcap}  %% puts link at top of figure, must be after hyperref
 \usepackage{subfig}
 \usepackage{graphicx}
+\usepackage{afterpage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%% DOCUMENT START %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -383,6 +390,23 @@ This dissertation is original work by the author, Einar~Helgi~Guðmundsson.
 \begin{tabular}{ll}
 MSc &Masters of Science\\
 PhD &Doctor of Philosophy\\
+ANN &Artificial Neural Network\\
+NN &Neural Network\\
+RNN &Recurrent Neural Network\\
+GRU &Gated Recurrent Unit\\
+LSTM &Long Short Term Memory\\
+NLP &Natural Language Processing\\
+TCNN &Temporal Convolutional Neural Network\\
+NARXNN &Non-linear Auto Regressive Neural Network\\
+TFT &Temporal Fusion Transformer\\
+GRN &Gated Residual Network\\
+MAPE &Mean Absolute Percentage Error\\
+MAE &Mean Absolute Error\\
+CUDA &Compute Unified Device Architecture\\
+AMD &Advanced Micro Devices inc.\\
+CPU &Central Processing Unit\\
+RAM &Random Access Memory\\
+
 \end{tabular}
 
 %\coverchapter{List of Symbols}%%RUM: Not mentioned
@@ -418,8 +442,8 @@ PhD &Doctor of Philosophy\\
 
 %% If appendices are needed, uncomment the following line
 %% and include the appendices in separate files
-\appendix{}%%RUM: "Appendicies (as appropriate)
-\input{code} % as an example, perhaps some of your code
+%\appendix{}%%RUM: "Appendicies (as appropriate)
+%\input{code} % as an example, perhaps some of your code
 
 %\backmatter{} % Sections after this don't get numbers
 %% We prefer that all elements be numbered
