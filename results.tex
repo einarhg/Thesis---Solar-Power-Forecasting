@@ -29,6 +29,16 @@ In the test dataset, there are some clear days, where the sun was mostly or enti
 
 The model does not manage near-perfect predictions on all of these clear days, and makes a few under-predictions, as can be seen in Figure~\ref{fig:full_low_worst}.
 These predictions still predict steady sunshine, and are within the 90\% confidence interval, which is slightly larger than for the other clear day predictions. These predictions have a higher MAPE of 10-13\%.
+
+
+
+\subsection{Medium variance days}
+On days with some variance in the irradiance measured, the model is generally able to predict the irradiance with relatively good accuracy.
+The model tends to give a smoother prediction than the measured value, averaging through the peaks and valleys of the measured values and most of the time the observed value is within the 90\% confidence interval. 
+
+Figure~\ref{fig:full_med_best} shows examples of good predictions with high confidence, though the confidence is generally lower the farther the irradiance is from the value of a clear day.
+
+\afterpage{%
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/low/worst_1.png}}\qquad
@@ -37,12 +47,6 @@ These predictions still predict steady sunshine, and are within the 90\% confide
     \label{fig:full_low_worst}}
 \end{figure}
 
-
-\subsection{Medium variance days}
-On days with some variance in the irradiance measured, the model is generally able to predict the irradiance with relatively good accuracy.
-The model tends to give a smoother prediction than the measured value, averaging through the peaks and valleys of the measured values and most of the time the observed value is within the 90\% confidence interval. 
-
-Figure~\ref{fig:full_med_best} shows examples of good predictions with high confidence, though the confidence is generally lower the farther the irradiance is from the value of a clear day.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_g_1.png}}\qquad
@@ -52,6 +56,8 @@ Figure~\ref{fig:full_med_best} shows examples of good predictions with high conf
     \caption{Examples of days with some drops in irradiance, where the model performs very well.
     \label{fig:full_med_best}}
 \end{figure}
+\clearpage
+}
 
 In Figure~\ref{fig:full_med_med} we see examples of days where the model achieves higher error, MAPE in the range 19-35\%, but with generally larger 90\% confidence intervals so the model still keeps the measured values close to or within them.
 \begin{figure}[ht!]
@@ -78,7 +84,7 @@ For a few medium variance days, the model does not track well. Figures~\ref{fig:
 
 \clearpage
 \subsection{High variance days}
-A few days in the dataset had very low irradiance for part of, or the whole day, or large fluctuations in irradiance. These situations are the most difficult for the model to predict. Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} and \ref{fig:full_high_c} show the model somewhat following the observations, but with a high MAPE of 38-80\% because of offsets in time and/or magnitude. The observed value is often outside the 90\% confidence interval of the predictions. For Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} the sum of predicted values is close to the sum of observed values, indicating relatively high accuracy for the days taken as a whole. Figure\ref{fig:full_high_d} shows an outlier with an extremely high MAPE of 139\%, where the model predicts an almost clear day, with high confidence, on a day that received very little irradiance.
+A few days in the dataset had very low irradiance for part of, or the whole day, or large fluctuations in irradiance. These situations are the most difficult for the model to predict. Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} and \ref{fig:full_high_c} show the model somewhat following the observations, but with a high MAPE of 38-80\% because of offsets in time and/or magnitude. The observed value is often outside the 90\% confidence interval of the predictions. For Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} the sum of predicted values is close to the sum of observed values, indicating relatively high accuracy for the days taken as a whole. Figure~mi\ref{fig:full_high_d} shows an outlier with an extremely high MAPE of 139\%, where the model predicts an almost clear day, with high confidence, on a day that received very little irradiance.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/high/high_1.png}\label{fig:full_high_a}}\qquad
@@ -103,7 +109,7 @@ The limited model achieves an average MAPE of 15.98\% on the test dataset. The m
     \label{fig:days_less}}
 \end{figure}
 
-
+\newpage
 \subsection{Low variance days}
 The model predicts most clear days with relatively high accuracy, but even on the best days, it deviates quite a bit from the observed values, as shown in Figure~\ref{fig:less_low_a}. The model sometimes under-predicts on clear days. In Figure~\ref{fig:less_low_b} we can see an example of a day where, even though the 90\% confidence area is large, the observed irradiance is outside it.
 \begin{figure}[ht!]
@@ -113,18 +119,23 @@ The model predicts most clear days with relatively high accuracy, but even on th
     \caption{Examples of model performance on clear days.
     \label{fig:less_low}}
 \end{figure}
-poopies manana 
 
 \subsection{Medium variance days}
 The model shows less accuracy when the irradiance is not steady. Predictions for most days have the smooth profile of an optimal day but are scaled to fit closer to the lower total irradiance for the day. The model is inconsistent in how well it tracks the observed irradiance and the confidence it does that with. Sometimes, as shown in Figure~\ref{fig:less_med_a} the model tracks relatively well, with the observations mostly within the rather tight 90\% confidence interval of roughly $+50/-150 W/m^2$. In Figure~\ref{fig:less_med_b} we see an example where the model is wrong with very high confidence for the first half of the day. Figure~\ref{fig:less_med_c} shows the opposite, the model predicts low irradiance for the whole day with a very large 90\% confidence interval of roughly $\pm200 W/m^2$.
+
+\afterpage{%
+\vspace{5cm}
 \begin{figure}[ht!]
     \centering
-    \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_g_1.png}\label{fig:less_med_a}}\qquad
-    \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_2.png}\label{fig:less_med_b}}\qquad
-    \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_1.png}\label{fig:less_med_c}}\qquad
+    \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_g_1.png}\label{fig:less_med_a}}\qquad}
+    \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_2.png}\label{fig:less_med_b}}\qquad}
+    \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_1.png}\label{fig:less_med_c}}\qquad
+    }
     \caption{Examples of days with some drops in irradiance.
     \label{fig:less_med}}
 \end{figure}
+\clearpage
+}
 
 \clearpage
 \subsection{High variance days}

@@ -46,7 +46,7 @@
 %% icelandic: thesis is in Icelandic
 %% oldstyle:  use the PhD headers and footers from the old CS template
 %% online: for online versions (skip blank pages)
-\documentclass[online,masters,deptscs,forcegraphics,final]{ruthesis}
+\documentclass[online,masters,deptscs,forcegraphics,draft]{ruthesis}
 
 %%%%%%%%%%%%%%%%%%%% TeXStudio Magic Comments %%%%%%%%%%%%%%%%%%%%%
 %% These comments that start with "!TeX" modify the way TeXStudio works
@@ -264,13 +264,15 @@
 %% this is probably due to interactions with the MultiLingual macros.
 %% TODO: turn this into more sensible macros to avoid confusion --foley
 \newML{AbstractText}{
-The world is moving at increasing speed away from generating electricity using fossil fuels, toward more environmentally friendly options, such as solar power. Solar power production is volatile and highly dependent on weather conditions, primarily cloud cover. Instability and unpredictability are undesirable in power production since production must match demand. In order to ensure power availability, highly polluting and expensive fossil power stations, \enquote{peaker plants}, are kept on standby to react to the instability in solar power. The ability to reliably predict solar power production provides more predictability to power grid operators, allowing for greater efficiency in grid operation. 
+The world is moving at increasing speed away from generating electricity using fossil fuels, toward more environmentally friendly options, such as solar power. Solar power production is volatile and highly dependent on weather conditions, primarily cloud cover. Instability and unpredictability are undesirable in power production since production must match demand. In order to ensure power availability when dependent on solar power, highly polluting and expensive fossil power stations, \enquote{peaker plants}, are kept on standby to react to the instability in solar power. The ability to reliably predict solar power production provides more predictability to power grid operators, allowing for greater efficiency in grid operation. 
 Valuable data exists in weather forecasts, which can be harnessed to increase predictability in solar power generation. We use novel deep learning methods, attention, and specifically Temporal Fusion Transformers, to forecast the irradiance at a solar power station, which correlates very strongly with power output. We base this on Belgingur ehf.'s high-resolution weather forecast data, the 24-hour forecast irradiance values for the area of the power station.
 Our model achieves a very low average Mean Absolute Percentage Error of 13.21\% on the test dataset for one-day forecasts. In addition, the model outputs a confidence level for its predictions providing insight to a grid operator on whether to expect unpredictability in the power output. The model is able to generate more accurate predictions when utilizing forecast data from a wider area around the power station than exclusively data from the power station‘s immediate vicinity.
 
 }  
 {
-Íslenska!
+Hraðar og hraðar erum við að færast frá því að framleiða raforku með jarðefnaeldsneyti, í átt að umhverfisvænni mátum til raforkuframleiðslu eins og sólarorku. Sólarorka er óútreiknanleg og mjög háð veðurfari, aðallega skýjahulu. Óstöðugleiki og óútreiknanleiki eru óákjósanlegir þegar kemur að sólarorku, þar sem framleiðsla verður að vera jöfn neyslu. Til að tryggja afhendingu raforku, þegar sólarorka er notuð, reiða framleiðendur sig oft á dýr og mengandi orkuver sem ganga fyrir jarðefnaeldsneyti og standa í viðbragðsstöðu til að bregðast við óvæntum breytingum á sólarorkuframboði. Áreiðanleg geta til að sjá fyrir um sólarorkuframleiðslu gerir stjórnun raforkukerfa einfaldari og útreiknanlegri, sem eykur skilvirkni þeirra.
+Verðmæt gögn eru til í formi veðurspáa, sem hægt er að nýta til að gera sólarorkuframleiðslu útreiknanlegri. Við notum nýjar aðferðir á sviði djúpnáms, athygli(e. attention), og þá sérstaklega tímasamrunabylta (e. temporal fusion transformers) til að spá fyrir um sólargeislun við sólarorkuver, sem fylgir náið raforkuframleiðslu orkuversins. Við byggjum þessa vinnu á háupplausnarveðurspám Belgings ehf., 24 klst. geislunarspám fyrir staðsetningu okuversins.
+Módelið nær meðal beinni meðalprósentuskekkju (e. mean absolute percentage error) upp á 13.21\% á prófunargagnasettinu fyrir eins dags spár. Að auki skilar módelið öryggisbili fyrir spárnar, sem veitir raforkuframleiðendum innsæi um það hvort þeir geti búist við óútreiknanlegri sólarorkuframleiðslu. Módelið skilar nákvæmari spám þegar það styðst við veðurspágögn af stærra svæði í nánd orkuversins en þegar það nýtir eingöngu gögn fyrir nærumhverfi orkuversins.
 } % Icelandic abstract goes here
 \setAbstract{\MLAbstractText}
 
@@ -390,6 +392,7 @@ This dissertation is original work by the author, Einar~Helgi~Guðmundsson.
 \begin{tabular}{ll}
 MSc &Masters of Science\\
 PhD &Doctor of Philosophy\\
+AI &Artificial Intelligence\\
 ANN &Artificial Neural Network\\
 NN &Neural Network\\
 RNN &Recurrent Neural Network\\
@@ -433,6 +436,7 @@ RAM &Random Access Memory\\
 %% See the introduction for guidance.
 
 \include{introduction}%%RUM: Introduction
+\include{background}
 \include{methods}%%RUM: "Methods"
 \include{results}%%RUM: "Results"
 \include{discussion}%%RUM: "Discussion"
