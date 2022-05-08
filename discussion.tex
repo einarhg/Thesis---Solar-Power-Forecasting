@@ -36,14 +36,16 @@ Fig.~\ref{fig:disc_high} shows a clear example of the performance difference bet
 \end{figure}
 
 
-\section{Conclusion\label{sec:conclusions}}
-The results clearly show that relying on forecast irradiance data from meteorological models is a very effective, but not perfect, method of accurately predicting irradiance in a single area. A transformer model, the Temporal Fusion Transformer, managed to very effectively translate patterns in meteorological irradiance forecasts to accurate local irradiance predictions utilizing spatially and temporally adjacent data.
 
+\section{Limitations and Future Work}
 We used a dataset of a fairly limited size, only 425 days. A few years of data for training the model would likely yield somewhat better results. The data can be processed more before being input into the network to account for known variables like daily and yearly swings in irradiance, which might improve performance. There exists satellite irradiance measurement data that might be used for improving accuracy. It would be interesting to see if a neural network could extract information from the seven pyranometers scattered across the power station, rather than only dropping the highest and lowest values and taking an average. 
 
-\textcolor{blue}{The model has huge potential in utilizing more data, both a larger time-span and other exogenous data that might further help relate the input forecast to the actual irradiance.}
+The model also has huge potential in utilizing more varied data in addition to a larger time span, other exogenous data that might further help relate the input forecast to the actual irradiance. Experimenting with wind data, both historical and forecast data, may well unlock further steps in performance.
 
 Sadly, there is not a standard benchmark for solar irradiance forecast models, and the data used by others who have done similar work is not available, so we can't make a proper comparison between methodologies and models. 
+
+\section{Conclusion\label{sec:conclusions}}
+The results clearly show that relying on forecast irradiance data from meteorological models is a very effective, but not perfect, method of accurately predicting irradiance in a single area. A transformer model, the Temporal Fusion Transformer, managed to very effectively translate patterns in meteorological irradiance forecasts to accurate local irradiance predictions utilizing spatially and temporally adjacent data.\\
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "DEGREE-NAME-YEAR"

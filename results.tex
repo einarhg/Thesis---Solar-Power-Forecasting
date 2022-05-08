@@ -1,6 +1,6 @@
 \chapter{Results}
 Both models show a strong ability to predict solar irradiance one day into the future.
-The full model, using weather forecast data from the surrounding area, shows both a lower Mean Absolute Percentage Error (MAPE), at 13.21\% vs. 15.98\%, as well as better tracking in challenging conditions and a better ability to recognize uncertain conditions, generally reporting lower confidence when its predictions are wrong. Both models can be trained to achieve slightly lower MAPE, but that comes at the cost of a higher tendency to underfit variance, and higher false confidence.
+The full model, using weather forecast data from the surrounding area, shows both a lower Mean Absolute Percentage Error (MAPE), at 13.21\% vs. 15.98\%, as well as better tracking in challenging conditions and a better ability to recognize uncertain conditions, generally reporting lower confidence when its predictions are wrong. Both models can be trained to achieve slightly lower MAPE, but that comes at the cost of a higher tendency to underfit variance and higher false confidence.
 We show irradiance plots for select days representative of the models' performance in various conditions. These plots show the measured irradiance for the day, the models' predicted irradiance values, along with a 90\% confidence interval, detailed in section~\ref{sec:loss_function}. The plots also show the forecast downward shortwave irradiance, the largest factor in measured irradiance, from the model input. Additionally, the graphs contain the average MAPE for the day and the sum of prediction and observation values. The sum values act as a gauge for the total irradiance for the day.
 
 
@@ -22,13 +22,13 @@ In the test dataset, there are some clear days, where the sun was mostly or enti
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/low/best_3.png}}\qquad
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/low/best_2.png}}\qquad
-    \caption{Examples of clear days where the model preforms very well.
+    \caption{Examples of clear days where the model performs very well.
     \label{fig:full_low_best}}
 \end{figure}
 
 
 The model does not manage near-perfect predictions on all of these clear days, and makes a few under-predictions, as can be seen in Figure~\ref{fig:full_low_worst}.
-These predictions still predict steady sunshine, and are within the 90\% confidence interval, which is slightly larger than for the other clear day predictions. These predictions have a higher MAPE of 10-13\%.
+These predictions still predict steady sunshine and are within the 90\% confidence interval, which is slightly larger than for the other clear day predictions. These predictions have a higher MAPE of 10-13\%.
 
 
 
@@ -39,7 +39,7 @@ The model tends to give a smoother prediction than the measured value, averaging
 Figure~\ref{fig:full_med_best} shows examples of good predictions with high confidence, though the confidence is generally lower the farther the irradiance is from the value of a clear day.
 
 \afterpage{%
-\begin{figure}[ht!]
+\begin{figure}
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/low/worst_1.png}}\qquad
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/low/worst_2.png}}\qquad
@@ -47,7 +47,7 @@ Figure~\ref{fig:full_med_best} shows examples of good predictions with high conf
     \label{fig:full_low_worst}}
 \end{figure}
 
-\begin{figure}[ht!]
+\begin{figure}
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_g_1.png}}\qquad
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_g_2.png}}\qquad
@@ -84,7 +84,7 @@ For a few medium variance days, the model does not track well. Figures~\ref{fig:
 
 \clearpage
 \subsection{High variance days}
-A few days in the dataset had very low irradiance for part of, or the whole day, or large fluctuations in irradiance. These situations are the most difficult for the model to predict. Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} and \ref{fig:full_high_c} show the model somewhat following the observations, but with a high MAPE of 38-80\% because of offsets in time and/or magnitude. The observed value is often outside the 90\% confidence interval of the predictions. For Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} the sum of predicted values is close to the sum of observed values, indicating relatively high accuracy for the days taken as a whole. Figure~mi\ref{fig:full_high_d} shows an outlier with an extremely high MAPE of 139\%, where the model predicts an almost clear day, with high confidence, on a day that received very little irradiance.
+A few days in the dataset had very low irradiance for part of, or the whole day, or large fluctuations in irradiance. These situations are the most difficult for the model to predict. Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} and \ref{fig:full_high_c} show the model somewhat following the observations, but with a high MAPE of 38-80\% because of offsets in time and/or magnitude. The observed value is often outside the 90\% confidence interval of the predictions. For Figures~\ref{fig:full_high_a}, \ref{fig:full_high_b} the sum of predicted values is close to the sum of observed values, indicating relatively high accuracy for the days taken as a whole. Figure~\ref{fig:full_high_d} shows an outlier with an extremely high MAPE of 139\%, where the model predicts an almost clear day, with high confidence, on a day that received very little irradiance.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/high/high_1.png}\label{fig:full_high_a}}\qquad
@@ -100,7 +100,7 @@ A few days in the dataset had very low irradiance for part of, or the whole day,
 
 \clearpage
 \section{Less forecast data}
-To confirm that the full model utilizes the input data for the surrounding area, we also trained the model on only irradiance forecast for the cell the power station is located in.
+To confirm that the full model utilizes the input data for the surrounding area, we also trained the model on only the irradiance forecast for the cell the power station is located in.
 The limited model achieves an average MAPE of 15.98\% on the test dataset. The maximum daily average MAPE is 122.87\% and the minimum is 3.47\%. Figure~\ref{fig:days_less} shows the average MAPE the limited model achieved for the test dataset on a day-by-day basis.
 \begin{figure}[ht!]
     \centering
@@ -125,7 +125,7 @@ The model shows less accuracy when the irradiance is not steady. Predictions for
 
 \afterpage{%
 \vspace{5cm}
-\begin{figure}[ht!]
+\begin{figure}
     \centering
     \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_g_1.png}\label{fig:less_med_a}}\qquad}
     \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_2.png}\label{fig:less_med_b}}\qquad}
@@ -139,7 +139,7 @@ The model shows less accuracy when the irradiance is not steady. Predictions for
 
 \clearpage
 \subsection{High variance days}
-For the few days in the dataset that had very low irradiance for part of, or the whole day or large fluctuations in irradiance, the model displays high error, MAPE in the range 53-123\% with varying confidence. Figures~\ref{fig:less_high_a} and \ref{fig:less_high_b} show large over-predictions with high confidence, and Figures~\ref{fig:less_high_c} and \ref{fig:less_high_d} show days where the 90\% confidence interval covers the top 60\% of the graph, yet it does not cover the observations.
+For the few days in the dataset that had very low irradiance for part of, or the whole day, or large fluctuations in irradiance, the model displays a high error, MAPE in the range 53-123\% with varying confidence. Figures~\ref{fig:less_high_a} and \ref{fig:less_high_b} show large over-predictions with high confidence, and Figures~\ref{fig:less_high_c} and \ref{fig:less_high_d} show days where the 90\% confidence interval covers the top 60\% of the graph, yet it does not cover the observations.
 \begin{figure}[ht!]
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/high/high_1.png}\label{fig:less_high_a}}\qquad
