@@ -6,7 +6,7 @@ In this chapter, we discuss our solution to the problem of predicting solar powe
 This work relies on two types of data, \emph{the ground truth}, the measured irradiance at the power station and \emph{the input}, the irradiance values from high-resolution weather forecasts for the area. The data spans the 425 days from August 1st 2020 to September 30th 2021 for the Ituverava solar power station run by Enel S.p.A. in Minas Gerais, Brazil.
 
 \subsection{Irradiance measurements}
-The irradiance was measured with seven Kipp \& Zonen CM21 pyranometers placed around the power station. The pyranometers have a reported maximum measurement error of 3\%. For input into the network, the highest and lowest measured values are dropped and the average value of the other five measurements is used. This data is provided with five-minute intervals, but the neural network operates hourly. To downsample the measurement data to an hourly format, we averaged the values for the twenty minutes before and after the beginning of each hour. Finally, the irradiance values were normalized linearly to the range $0.0-1.0$ before being input into the neural network.
+Under certain circumstances irradiance values simulated after the fact can be accurate, however this does not apply in all conditions, and real measured values are much more reliable \cite{gueymard_global_2008}. The irradiance was measured with seven Kipp \& Zonen CM21 pyranometers placed around the power station. The pyranometers have a reported maximum measurement error of 3\%. For input into the network, the highest and lowest measured values are dropped and the average value of the other five measurements is used. This data is provided with five-minute intervals, but the neural network operates hourly. To downsample the measurement data to an hourly format, we averaged the values for the twenty minutes before and after the beginning of each hour. Finally, the irradiance values were normalized linearly to the range $0.0-1.0$ before being input into the neural network.
 
 
 \subsection{Forecast Data\label{cha:forecast_data}}
@@ -30,7 +30,7 @@ This allowed for quick training of models, as with the relatively small amount o
     \subsection{Temporal Fusion Transformer}
     \textcolor{red}{TODO: add more meat}
     
-    We utilize a Temporal Fusion Transformer (TFT) model for the irradiance prediction.
+    \noindent We utilize a Temporal Fusion Transformer (TFT) model for the irradiance prediction.
     TFTs are  general networks which use attention at their core to generate multi-horizon forecasts with the ability to consider
     known information about the future, other related time series, and static metadata for the forecast \cite{lim_temporal_2020}. Figure~\ref{fig:tft_overviwew} shows an overview of how TFTs operate.
     
@@ -43,22 +43,23 @@ This allowed for quick training of models, as with the relatively small amount o
     \end{figure}
     \clearpage
     }
-    TFTs are composed of various components, each primarily addressing a single input type (i.e. static, known or observed inputs), aimed at maximizing the model versatility across various problems.
+    
+    \noindent TFTs are composed of various components, each primarily addressing a single input type (i.e. static, known or observed inputs), aimed at maximizing the model versatility across various problems.
     
 
     
-    \textbf{Gating mechanisms} identify and skip unused input data, granting models greater ability to work with less curated input data.\\
+    \noindent\textbf{Gating mechanisms} identify and skip unused input data, granting models greater ability to work with less curated input data.\\
     A Gated Residual Network (GRN), shown in Figure~\ref{fig:ttgt_detail}, is a base building block of TFTs \cite{lim_temporal_2020}.\\
-    \indent\textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}.\\
-    \indent\textbf{Static covariate encoders} encode static features into context vectors, integrating them into the network \cite{lim_temporal_2020}.  \\
-    \indent\textbf{Temporal processing} using a more traditional RNN sequence-to-sequence layer (see Section~\ref{cha:RNN}) for short term, local processing and the more novel multi-headed attention layer (see Section~\ref{cha:transformer}) for long term pattern capture \cite{lim_temporal_2020}.\\
-    \indent\textbf{Prediction intervals} in the form of quantile forecasts, discussed in Section~\ref{sec:loss_function}, show a confidence interval for the predictions \cite{lim_temporal_2020}. \\
+    \textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}.\\
+    \textbf{Static covariate encoders} encode static features into context vectors, integrating them into the network \cite{lim_temporal_2020}.  \\
+    \textbf{Temporal processing} using a more traditional RNN sequence-to-sequence layer (see Section~\ref{cha:RNN}) for short term, local processing and the more novel multi-headed attention layer (see Section~\ref{cha:transformer}) for long term pattern capture \cite{lim_temporal_2020}.\\
+    \textbf{Prediction intervals} in the form of quantile forecasts, discussed in Section~\ref{sec:loss_function}, show a confidence interval for the predictions \cite{lim_temporal_2020}. \\
     Figure~\ref{fig:ttgt_detail} shows a detailed view of the TFT structure as discussed. 
     
     \afterpage{%
     \begin{figure}
         \centering
-         \makebox[\textwidth][c]{\includegraphics[scale=0.37]{imgs/TFT.png}}
+         \makebox[\textwidth][c]{\includegraphics[scale=0.36]{imgs/TFT.png}}
         \caption{A detailed view of the architecture of the Temporal Fusion transformer.\cite{lim_temporal_2020}
         \label{fig:ttgt_detail}}
     \end{figure}
@@ -73,7 +74,7 @@ This allowed for quick training of models, as with the relatively small amount o
     \begin{figure}[ht!]
         \centering
         \includegraphics[scale=0.6]{imgs/solar_TFT_overview.jpg}
-        \caption{An overview of  the setup of the neural network.
+        \caption{An overview of the setup of the neural network.
         \label{fig:solar_tft_overviwew}}
     \end{figure}
 
@@ -132,5 +133,5 @@ This allowed for quick training of models, as with the relatively small amount o
     \subsubsection{Loss function}\label{sec:loss_function}
     \textcolor{red}{TODO: Flesh out and fix}\\
     We use the quantile loss  Temporal Fusion Transformers is quantile loss, which we use.
-    A model's prediction is a random value within a probability distribution \cite{}. If we make multiple predictions we can estimate this probability distribution by seeing within what range a selected proportion of the predictions fall \cite{koenker_quantile_2001}. PyTorch Forecasting's quantile loss function takes the Mean Absolute Error (MAE) of three quantiles, 90\%, 50\% and 10\%. [0.02, 0.1, 0.25, 0.5, 0.75, 0.9, 0.98] This gives a good picture of the model's confidence in a prediction. A smaller quantile range indicated more confidence.
+    A model's prediction is a random value within a probability distribution \cite{wen_multi-horizon_2018}. If we make multiple predictions we can estimate this probability distribution by seeing within what range a selected proportion of the predictions fall \cite{koenker_quantile_2001}. PyTorch Forecasting's quantile loss function takes the Mean Absolute Error (MAE) of three quantiles, 90\%, 50\% and 10\%. This gives a good picture of the model's confidence in a prediction. A smaller quantile range indicated more confidence.
     
