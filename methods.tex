@@ -28,7 +28,6 @@ This allowed for quick training of models, as with the relatively small amount o
 
 \section{Model}
     \subsection{Temporal Fusion Transformer}
-    \textcolor{red}{TODO: add more meat}
     
     \noindent We utilize a Temporal Fusion Transformer (TFT) model for the irradiance prediction.
     TFTs are  general networks which use attention at their core to generate multi-horizon forecasts with the ability to consider
@@ -48,12 +47,12 @@ This allowed for quick training of models, as with the relatively small amount o
     
 
     
-    \noindent\textbf{Gating mechanisms} identify and skip unused input data, granting models greater ability to work with less curated input data.\\
-    A Gated Residual Network (GRN), shown in Figure~\ref{fig:ttgt_detail}, is a base building block of TFTs \cite{lim_temporal_2020}.\\
-    \textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}.\\
+    \noindent\textbf{Gating mechanisms} identify and skip unused input data, granting models greater ability to work with less curated input data, or datasets where it is unknown which parts are of significance.\\
+    The Gated Residual Network (GRN) structure, shown in Figure~\ref{fig:ttgt_detail}, is a base building block of TFTs \cite{lim_temporal_2020}. It provides the model the flexibility to choose the complexity of its input, more complex where needed, and less complex where not.\\
+    \textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}. Some variables may be more important than others, \enquote{TFT is designed to provide instance-wise variable selection through the use of variable selection networks applied to both static covariates and time-dependent covariates.} \cite{lim_temporal_2020} The variable selection mechanism also allows the model to remove noisy inputs that might have a negative effect on performance. \\
     \textbf{Static covariate encoders} encode static features into context vectors, integrating them into the network \cite{lim_temporal_2020}.  \\
     \textbf{Temporal processing} using a more traditional RNN sequence-to-sequence layer (see Section~\ref{cha:RNN}) for short term, local processing and the more novel multi-headed attention layer (see Section~\ref{cha:transformer}) for long term pattern capture \cite{lim_temporal_2020}.\\
-    \textbf{Prediction intervals} in the form of quantile forecasts, discussed in Section~\ref{sec:loss_function}, show a confidence interval for the predictions \cite{lim_temporal_2020}. \\
+    \textbf{Prediction intervals} in the form of quantile forecasts, discussed in Section~\ref{sec:loss_function}, display a confidence interval for the predictions \cite{lim_temporal_2020}. \\
     Figure~\ref{fig:ttgt_detail} shows a detailed view of the TFT structure as discussed. 
     
     \afterpage{%
@@ -131,7 +130,8 @@ This allowed for quick training of models, as with the relatively small amount o
         \end{table}
     
     \subsubsection{Loss function}\label{sec:loss_function}
-    \textcolor{red}{TODO: Flesh out and fix}\\
-    We use the quantile loss  Temporal Fusion Transformers is quantile loss, which we use.
-    A model's prediction is a random value within a probability distribution \cite{wen_multi-horizon_2018}. If we make multiple predictions we can estimate this probability distribution by seeing within what range a selected proportion of the predictions fall \cite{koenker_quantile_2001}. PyTorch Forecasting's quantile loss function takes the Mean Absolute Error (MAE) of three quantiles, 90\%, 50\% and 10\%. This gives a good picture of the model's confidence in a prediction. A smaller quantile range indicated more confidence.
+    The loss function used for Temporal Fusion Transformers is quantile loss, as it's an integral part of generating the confidence intervals of the model \cite{lim_temporal_2020}.
+    A model's prediction is a random value within a probability distribution \cite{wen_multi-horizon_2018}. If we make multiple predictions we can estimate this probability distribution by seeing within what range a selected proportion of the predictions fall \cite{koenker_quantile_2001}. PyTorch Forecasting's quantile loss function takes the Mean Absolute Error (MAE) of three quantiles, 90\%, 50\% and 10\%. This gives a good picture of the model's confidence in a prediction. A smaller quantile range indicates more confidence.
+    
+    
     
