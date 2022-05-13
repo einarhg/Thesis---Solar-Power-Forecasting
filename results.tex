@@ -1,7 +1,7 @@
 \chapter{Results}
 Both models show a strong ability to predict solar irradiance one day into the future.
 The full model, using weather forecast data from the surrounding area, shows both a lower Mean Absolute Percentage Error (MAPE), at 13.21\% vs. 15.98\%, as well as better tracking in challenging conditions and a better ability to recognize uncertain conditions, generally reporting lower confidence when its predictions are wrong. Both models can be trained to achieve slightly lower MAPE, but that comes at the cost of a higher tendency to underfit variance and higher false confidence.
-We show irradiance plots for select days representative of the models' performance in various conditions. These plots show the measured irradiance for the day, the models' predicted irradiance values, along with a 90\% confidence interval, detailed in section~\ref{sec:loss_function}. The plots also show the forecast downward shortwave irradiance, the largest factor in measured irradiance, from the model input. Additionally, the graphs contain the average MAPE for the day and the sum of prediction and observation values. The sum values act as a gauge for the total irradiance for the day.
+We show irradiance plots for select days representative of the models' performance in various conditions. These plots show the measured irradiance for the day, the models' predicted irradiance values, along with a 90\% confidence interval, detailed in Section~\ref{sec:loss_function}. The plots also show the forecast downward shortwave irradiance, the largest factor in measured irradiance, from the model input. Additionally, the graphs contain the average MAPE for the day and the sum of prediction and observation values. The sum values act as a gauge for the total irradiance for the day.
 
 
 \section{Full model}
@@ -75,7 +75,7 @@ In Figure~\ref{fig:full_med_med} we see examples of days where the model achieve
 \clearpage
 }
 
-For a few medium variance days, the model does not track well. Figures~\ref{fig:full_med_bad_a} and \ref{fig:full_med_bad_d} show where the model predicts a constant lower irradiance when half the day had high irradiance and the other half low. Figures~\ref{fig:full_med_bad_b} and \ref{fig:full_med_bad_c} show the model predicting a mostly or fully sunny day when it wasn't. In all of these cases, the observed irradiance is far outside the 90\% confidence interval.
+For a few medium variance days, the model does not track well. Figures~\ref{fig:full_med_bad_a} and \ref{fig:full_med_bad_d} show where the model predicts a constant lower irradiance when half the day had high irradiance and the other half low. Figures~\ref{fig:full_med_bad_b} and \ref{fig:full_med_bad_c} show the model predicting a mostly or fully sunny day when it was not. In all of these cases, the observed irradiance is far outside the 90\% confidence interval.
 
 \afterpage{%
 \begin{figure}

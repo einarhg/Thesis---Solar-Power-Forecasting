@@ -670,7 +670,7 @@
 \newML{ID}{Kennitala}{Kennitala}
 
 
-\newML{SCS}{School of Computer Science}{Tölvunarfræðideild}
+\newML{SCS}{Department of Computer Science}{Tölvunarfræðideild}
 \newML{SSE}{School of Science and Engineering}{Tækni- og verkfræðideild}
 
 \newML{jan}{January}{janúar}

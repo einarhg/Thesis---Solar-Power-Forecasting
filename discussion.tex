@@ -4,7 +4,7 @@
 %difficult, or an important learning experience, put it here.  This is
 %also a good place to put additional figures and data.
 Mean Absolute Percentage Error (MAPE) does not tell the whole story of a model's performance. The true measure of performance is how useful the model output is to energy producers. The model's confidence in a prediction is almost as important as the accuracy of the prediction, and the total energy produced over the day matters.
-The forecast downward shortwave irradiance, the largest factor in measured irradiance, rarely drops. It is almost exclusively on very high variance days that it deviates from a sine wave. The downward diffuse shortwave irradiance, the other network input data value, is a much smaller part of the total irradiance and has, to the bare eye, seemingly no correlation with the observation values. Despite this, the models show generally fantastic performance in predicting the irradiance.
+The forecast downward shortwave irradiance, the largest factor in measured irradiance, rarely drops. It is almost exclusively on very high variance days that it deviates from a sine wave. The downward diffuse shortwave irradiance, the other network input data value, is a much smaller part of the total irradiance and has, to the bare eye, seemingly no correlation with the observation values. Despite this, the models show generally excellent performance in predicting the irradiance.
 The full model was able to utilize the forecast data from the surrounding area to achieve noticeably better performance. Of course, since the limited model uses only one-ninth of the data of the full model, some hyperparameter tuning had to be done to optimize its performance and some of the performance difference could be explained by worse optimization.
 With the data at hand, it is not possible to separate the performance of the weather forecast model producing our input data and the performance of our models. We do not know how close this model comes to maximizing the information available in the input data.
 
@@ -40,15 +40,15 @@ Figure~\ref{fig:disc_high} shows a clear example of the performance difference b
 
 
 
-\section{Limitations and Future Work}
+\section{Limitations and future work}
 We used a dataset of a fairly limited size, only 425 days. A few years of data for training the model would likely yield somewhat better results. The data can be processed more before being input into the network to account for known variables like daily and yearly swings in irradiance, which might improve performance. There exists satellite irradiance measurement data that might be used for improving accuracy. It would be interesting to see if a neural network could extract information from the seven pyranometers scattered across the power station, rather than only dropping the highest and lowest values and taking an average. 
 
 The model also has huge potential in utilizing more varied data in addition to a larger time span, other exogenous data that might further help relate the input forecast to the actual irradiance. Experimenting with wind data, both historical and forecast data, may well unlock further steps in performance.
 
-Sadly, there is not a standard benchmark for solar irradiance forecast models, and the data used by others who have done similar work is not available, so we can't make a proper comparison between methodologies and models. 
+Sadly, there is not a standard benchmark for solar irradiance forecast models, and the data used by others who have done similar work is not available, so we can not make a proper comparison between methodologies and models, as weather predictability can vary hugely between locations. However, for some reference, Lee et al. produced a combination Convolutional Neural Network (CNN) and Long Short-Term Memory (CNN) model which managed to forecast the power output of a solar power station in Scotland 6 hours into the future with a MAPE of 25.85\% \cite{lee_forecasting_2018}.
 
 \section{Conclusion\label{sec:conclusions}}
-The results clearly show that relying on forecast irradiance data from meteorological models is a very effective, but not perfect, method of accurately predicting irradiance in a single area. A transformer model, the Temporal Fusion Transformer, managed to very effectively translate patterns in meteorological irradiance forecasts to accurate local irradiance predictions utilizing spatially and temporally adjacent data.\\
+The results clearly show that relying on forecast irradiance data from meteorological models is an effective, but not perfect, method of accurately predicting irradiance in a single area. A transformer model, the Temporal Fusion Transformer, managed to effectively translate patterns in meteorological irradiance forecasts to accurate local irradiance predictions utilizing spatially and temporally adjacent data.\\
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "DEGREE-NAME-YEAR"
