@@ -20,7 +20,7 @@ RNNs are a class of deep neural networks where nodes are connected in a temporal
     \subfloat[Plain Recurrent Neural Network (RNN)]{\includegraphics[scale=0.35]{imgs/RNN.png}\label{fig:RNN}}\qquad
     \subfloat[Gated Recurrent Unit (GRU)]{\includegraphics[scale=0.35]{imgs/GRU.png}\label{fig:GRU}}\qquad
     \subfloat[Long Short-Term Memory (LSTM)]{\includegraphics[scale=0.35]{imgs/LSTM.png}\label{fig:LSTM}}\qquad
-    \caption{The cells of different Recurrent Neural Network types. $x_t$ represents inputs, $h_t$ and $C_t$ represent hidden layer vectors passed between cells. $\sigma$ and $tanh$ are activation functions. \cite{lopez_rnn_nodate}
+    \caption{The cells of different Recurrent Neural Network types. $x_t$ represents inputs, $h_t$ and $C_t$ represent hidden layer vectors passed between cells. $\sigma$ and $tanh$ are activation functions \cite{lopez_rnn_nodate}.
     \label{fig:RNNs}}
 \end{figure}
 
@@ -43,8 +43,8 @@ RNNs are a class of deep neural networks where nodes are connected in a temporal
 \afterpage{%
 \begin{figure}
     \centering
-    \includegraphics[scale=0.80]{imgs/transformer.png}
-    \caption{The transformer architecture. \cite{vaswani_attention_2017}
+    \includegraphics[scale=0.70]{imgs/transformer.png}
+    \caption{The transformer architecture \cite{vaswani_attention_2017}.
     \label{fig:transformer}}
 \end{figure}
 \clearpage
@@ -64,7 +64,7 @@ RNNs are a class of deep neural networks where nodes are connected in a temporal
 Transformers have been used for some time in Natural Language Processing (NLP) and have more recently been used very effectively in forecasting \cite{vaswani_attention_2017}. They can more effectively learn and preserve local context located far apart in the input data. As an example from NLP, the training data can contain multiple cases where time is being told, far apart. A transformer model would then more easily identify that the word \enquote{o’clock} is generally preceded by a number, whereas RNNs would be more likely to struggle with such distributed information. This can be applied to our work as similar weather patterns would reoccur days apart and cause a similar effect on measured irradiance at the power station \cite{lim_time_2021}. Figure~\ref{fig:transformer} shows an overview of the transformer architecture.
 
 
-
+\newpage
 
 \subsection{Encoder/decoder}
 Transformers have an encoder/decoder structure, depicted in Figure~\ref{fig:encoder_decoder}. An encoder takes an input sequence and generates an abstract hidden state which the decoder then uses to generate an output sequence \cite{vaswani_attention_2017}. A major advantage of this methodology is that the inputs and outputs do not have to have the same length, whereas the primary limit of the architecture is that all information in the input sequence needs to be represented by a single vector for the decoder to decode. The encoder distils the input down to a much smaller representation, a bottleneck, only containing desired information which the decoder in turn extracts. This is on its own used for tasks like de-noising or colourizing images \cite{nechu_what_2020}. 
@@ -72,7 +72,7 @@ Transformers have an encoder/decoder structure, depicted in Figure~\ref{fig:enco
 \begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.5]{imgs/encoder_decoder.jpeg}
-    \caption{The encoder/decoder structure. \cite{nechu_what_2020}
+    \caption{The encoder/decoder structure \cite{nechu_what_2020}.
     \label{fig:encoder_decoder}}
 \end{figure}
 

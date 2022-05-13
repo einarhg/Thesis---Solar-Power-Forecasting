@@ -4,11 +4,13 @@ The full model, using weather forecast data from the surrounding area, shows bot
 We show irradiance plots for select days representative of the models' performance in various conditions. These plots show the measured irradiance for the day, the models' predicted irradiance values, along with a 90\% confidence interval, detailed in Section~\ref{sec:loss_function}. The plots also show the forecast downward shortwave irradiance, the largest factor in measured irradiance, from the model input. Additionally, the graphs contain the average MAPE for the day and the sum of prediction and observation values. The sum values act as a gauge for the total irradiance for the day.
 
 
+
+
 \section{Full model}
 The full model, utilizing irradiance data from surrounding areas achieves an average MAPE of 13.21\% on the test dataset. The maximum daily average MAPE is 138.87\% and the minimum is 2.50\%. Figure~\ref{fig:days_full} shows the average MAPE the full model achieves for the test dataset on a day-by-day basis.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=1]{imgs/graphs/full/days_full.png}
+    \includegraphics[scale=0.8]{imgs/graphs/full/days_full.png}
     \caption{The recorded Mean Absolute Percentage Error (MAPE) for each day in the test dataset for the full model. 
     \label{fig:days_full}}
 \end{figure}
@@ -112,12 +114,12 @@ To confirm that the full model utilizes the input data for the surrounding area,
 The limited model achieves an average MAPE of 15.98\% on the test dataset. The maximum daily average MAPE is 122.87\% and the minimum is 3.47\%. Figure~\ref{fig:days_less} shows the average MAPE the limited model achieved for the test dataset on a day-by-day basis.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=1]{imgs/graphs/less/days_single.png}
+    \includegraphics[scale=0.8]{imgs/graphs/less/days_single.png}
     \caption{The recorded Mean Absolute Percentage Error for each day in the test dataset of the limited model. 
     \label{fig:days_less}}
 \end{figure}
 
-\newpage
+
 \subsection{Low variance days}
 The model predicts most clear days with relatively high accuracy, but even on the best days, it deviates quite a bit from the observed values, as shown in Figure~\ref{fig:less_low_a}. The model sometimes under-predicts on clear days. In Figure~\ref{fig:less_low_b} we can see an example of a day where, even though the 90\% confidence area is large, the observed irradiance is outside it.
 \begin{figure}[ht!]

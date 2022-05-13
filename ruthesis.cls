@@ -1107,6 +1107,7 @@ Fax +354 599 6201}%
       }
     }%end \titletextfont
     \vfill
+    \thispagestyle{empty}
   \end{cover}
 }
   

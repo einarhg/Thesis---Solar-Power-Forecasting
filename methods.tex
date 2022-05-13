@@ -25,6 +25,7 @@ While a valuable metric, MAPE does not  fully represent the function of the mode
 The neural network was implemented in PyTorch 1.11 and PyTorch Forecasting 0.9.0. We used an NVIDIA GeForce RTX 3080Ti graphics card using CUDA for training. The computer had an AMD Ryzen 9 5950X CPU, 32GB of RAM and was running Windows 11.
 This allowed for quick training of models, as with the relatively small amount of data, training a model took 5-10 minutes.
 
+\newpage
 
 \section{Model}
     \subsection{Temporal Fusion Transformer}
@@ -37,7 +38,7 @@ This allowed for quick training of models, as with the relatively small amount o
     \begin{figure}
         \centering
          \makebox[\textwidth][c]{\includegraphics[scale=0.5]{imgs/TFT_overview.jpg}}
-        \caption{An overview of the Temporal Fusion Transformer.
+        \caption{An overview of the Temporal Fusion Transformer \cite{lim_temporal_2020}.
         \label{fig:tft_overviwew}}
     \end{figure}
     \clearpage
@@ -51,7 +52,8 @@ This allowed for quick training of models, as with the relatively small amount o
     
     The Gated Residual Network (GRN) structure, shown in Figure~\ref{fig:ttgt_detail}, is a base building block of TFTs \cite{lim_temporal_2020}. It provides the model with the flexibility to choose the complexity of its input, more complex where needed, and less complex where not.
     
-    \clearpage
+
+    
     \noindent\textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}. Some variables may be more important than others, \enquote{TFT is designed to provide instance-wise variable selection through the use of variable selection networks applied to both static covariates and time-dependent covariates.} \cite{lim_temporal_2020} The variable selection mechanism also allows the model to remove noisy inputs that might have a negative effect on performance. \\
     \textbf{Static covariate encoders} encode static features into context vectors, integrating them into the network \cite{lim_temporal_2020}.  \\
     \textbf{Temporal processing} using a more traditional RNN sequence-to-sequence layer (see Section~\ref{cha:RNN}) for short term, local processing and the more novel multi-headed attention layer (see Section~\ref{cha:transformer}) for long term pattern capture \cite{lim_temporal_2020}.\\
@@ -61,8 +63,8 @@ This allowed for quick training of models, as with the relatively small amount o
     \afterpage{%
     \begin{figure}
         \centering
-         \makebox[\textwidth][c]{\includegraphics[scale=0.36]{imgs/TFT.png}}
-        \caption{A detailed view of the architecture of the Temporal Fusion transformer. \cite{lim_temporal_2020}
+         \makebox[\textwidth][c]{\includegraphics[scale=0.3]{imgs/TFT.png}}
+        \caption{A detailed view of the architecture of the Temporal Fusion transformer \cite{lim_temporal_2020}.
         \label{fig:ttgt_detail}}
     \end{figure}
     \clearpage
@@ -75,7 +77,7 @@ This allowed for quick training of models, as with the relatively small amount o
     \afterpage{%
     \begin{figure}
         \centering
-        \makebox[\textwidth][c]{\includegraphics[scale=0.6]{imgs/solar_TFT_overview.jpg}}
+        \makebox[\textwidth][c]{\includegraphics[scale=0.5]{imgs/solar_TFT_overview.jpg}}
         \caption{An overview of the setup of the neural network.
         \label{fig:solar_tft_overviwew}}
     \end{figure}

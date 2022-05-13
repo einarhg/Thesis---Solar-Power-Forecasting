@@ -46,7 +46,7 @@
 %% icelandic: thesis is in Icelandic
 %% oldstyle:  use the PhD headers and footers from the old CS template
 %% online: for online versions (skip blank pages)
-\documentclass[online,masters,deptscs,forcegraphics,draft]{ruthesis}
+\documentclass[online,masters,deptscs,forcegraphics,final]{ruthesis}
 
 %%%%%%%%%%%%%%%%%%%% TeXStudio Magic Comments %%%%%%%%%%%%%%%%%%%%%
 %% These comments that start with "!TeX" modify the way TeXStudio works
@@ -153,7 +153,7 @@
 %% NOTE: THIS IS THE DATE OF THE SUPERVISOR'S SIGNATURE!!!!!!
 %% Predefined: \MLjan, \MLfeb, \MLmar, ... \MLdec
 %\whensigned{day}{month}{year} %day is only used on some formats, but you must put something.
-\whensigned{10}{\MLmay}{2022}
+\whensigned{20}{\MLmay}{2022}
 
 %% Title first in English then Icelandic
 %% You need to put both a normal case and ALL CAPS version into the macros.
@@ -190,7 +190,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%% Bachelors Only!!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setID{160992--2989}%kennitala
 \setSemester{2022-2}
-\setShortSignedDate{10.4.2022}
+\setShortSignedDate{20.5.2022}
 
 \setOrganization{Belgingur ehf.\\Grensásvegur 9\\108 Reykjavík}
 \setSubProgram{Hugbúnaðarverkfræði}
@@ -272,9 +272,9 @@ Our model achieves excellent results for one-day forecasts on the test dataset, 
 
 }  
 {
-Heimurinn er að færast frá því að framleiða raforku með jarðefnaeldsneyti, í átt að umhverfisvænni leiðum til raforkuframleiðslu eins og sólarorku. Sólarorka er óútreiknanleg og mjög háð veðurfari, aðallega skýjahulu. Óstöðugleiki og óútreiknanleiki eru óæskilegir þegar kemur að sólarorku, þar sem framleiðsla verður að vera jöfn neyslu. Til að tryggja afhendingu raforku þegar sólarorka er notuð, reiða framleiðendur sig oft á dýr og mengandi orkuver sem ganga fyrir jarðefnaeldsneyti og standa í viðbragðsstöðu til að bregðast við óvæntum breytingum á sólarorkuframboði. Sólarorkuframleiðsla yrði skilvirkari og áreiðanlegri ef hægt væri að spá nákvæmar um framleiðslugetu dagsins, t.d. með áreiðanlegri veðurspám og áhrif þeirra á framleiðslugetu.
+Heimurinn er að færast frá því að framleiða raforku með jarðefnaeldsneyti, í átt að umhverfisvænni leiðum til raforkuframleiðslu eins og sólarorku. Sólarorka er óútreiknanleg og mjög háð veðurfari, aðallega skýjahulu. Óstöðugleiki og óútreiknanleiki eru óæskilegir þegar kemur að sólarorku, þar sem framleiðsla verður að vera jöfn neyslu. Til að tryggja afhendingu raforku þegar sólarorka er notuð reiða framleiðendur sig oft á dýr og mengandi orkuver sem ganga fyrir jarðefnaeldsneyti og standa í viðbragðsstöðu til að bregðast við óvæntum breytingum á sólarorkuframboði. Sólarorkuframleiðsla yrði skilvirkari og áreiðanlegri ef hægt væri að spá nákvæmar um framleiðslugetu dagsins, t.d. með áreiðanlegri veðurspám og áhrif þeirra á framleiðslugetu.
 Verðmæt gögn eru til í formi veðurspáa sem hægt er að nýta til að gera sólarorkuframleiðslu útreiknanlegri. Við notum nýjar aðferðir á sviði djúpnáms, athygli(e. attention), og þá sérstaklega tímasamrunabylta (e. temporal fusion transformers) til að spá fyrir um sólargeislun við sólarorkuver sem fylgir náið raforkuframleiðslu orkuversins. Við byggjum þessa vinnu á háupplausnarveðurspám Belgings ehf., 24 klst. geislunarspám fyrir staðsetningu okuversins.
-Módelið nær meðal meðaltölugildisprósentuskekkju (e. mean absolute percentage error) upp á 13,21\% á prófunargagnasettinu fyrir eins dags spár. Að auki skilar módelið öryggisbili fyrir spárnar, sem veitir raforkuframleiðendum innsæi um það hvort þeir geti búist við óútreiknanlegri sólarorkuframleiðslu. Módelið skilar nákvæmari spám þegar það styðst við veðurspágögn af stærra svæði í nánd orkuversins en þegar það nýtir eingöngu gögn fyrir nærumhverfi orkuversins.
+Módelið nær meðal meðaltölugildisprósentuskekkju (e. mean absolute percentage error) upp á 13,21\% á prófunargagnasettinu fyrir eins dags spár. Að auki skilar módelið öryggisbili fyrir spárnar sem veitir raforkuframleiðendum innsæi um það hvort þeir geti búist við óútreiknanlegri sólarorkuframleiðslu. Módelið skilar nákvæmari spám þegar það styðst við veðurspágögn af stærra svæði í nánd orkuversins en þegar það nýtir eingöngu gögn fyrir nærumhverfi orkuversins.
 } % Icelandic abstract goes here
 \setAbstract{\MLAbstractText}
 
