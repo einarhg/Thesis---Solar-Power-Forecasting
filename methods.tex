@@ -49,7 +49,8 @@ This allowed for quick training of models, as with the relatively small amount o
     
     \noindent\textbf{Gating mechanisms} identify and skip unused input data, granting models greater ability to work with less curated input data, or datasets where it is unknown which parts are of significance.\\
     The Gated Residual Network (GRN) structure, shown in Figure~\ref{fig:ttgt_detail}, is a base building block of TFTs \cite{lim_temporal_2020}. It provides the model the flexibility to choose the complexity of its input, more complex where needed, and less complex where not.\\
-    \textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}. Some variables may be more important than others, \enquote{TFT is designed to provide instance-wise variable selection through the use of variable selection networks applied to both static covariates and time-dependent covariates.} \cite{lim_temporal_2020} The variable selection mechanism also allows the model to remove noisy inputs that might have a negative effect on performance. \\
+    \clearpage
+    \noindent\textbf{Variable selection networks} emphasize the most relevant inputs for every time step \cite{lim_temporal_2020}. Some variables may be more important than others, \enquote{TFT is designed to provide instance-wise variable selection through the use of variable selection networks applied to both static covariates and time-dependent covariates.} \cite{lim_temporal_2020} The variable selection mechanism also allows the model to remove noisy inputs that might have a negative effect on performance. \\
     \textbf{Static covariate encoders} encode static features into context vectors, integrating them into the network \cite{lim_temporal_2020}.  \\
     \textbf{Temporal processing} using a more traditional RNN sequence-to-sequence layer (see Section~\ref{cha:RNN}) for short term, local processing and the more novel multi-headed attention layer (see Section~\ref{cha:transformer}) for long term pattern capture \cite{lim_temporal_2020}.\\
     \textbf{Prediction intervals} in the form of quantile forecasts, discussed in Section~\ref{sec:loss_function}, display a confidence interval for the predictions \cite{lim_temporal_2020}. \\
@@ -69,19 +70,22 @@ This allowed for quick training of models, as with the relatively small amount o
     We trained two models. One which utilizes weather forecast data from an area surrounding the power station, and one which does not, as discussed in Section~\ref{cha:forecast_data}. The limited model is intended to show that the full model is able to glean additional information from the surrounding area data.
     
     
-    
-    \begin{figure}[ht!]
+    \afterpage{%
+    \begin{figure}
         \centering
-        \includegraphics[scale=0.6]{imgs/solar_TFT_overview.jpg}
+        \makebox[\textwidth][c]{\includegraphics[scale=0.6]{imgs/solar_TFT_overview.jpg}}
         \caption{An overview of the setup of the neural network.
         \label{fig:solar_tft_overviwew}}
     \end{figure}
+    \clearpage
+    }
 
 
     \subsubsection{Inputs}
         The dataset was split into a training set, composing 70\% of the data, a validation set, composing 10\% of the data and finally, 20\% of the data was reserved for testing.
         Figure~\ref{fig:solar_tft_overviwew} shows how the observed inputs, the irradiance measurements, along with corresponding data from historical irradiance forecasts are used as training inputs.
         
+    \pagebreak
     \subsubsection{Tuning}
         Significant tuning was done to optimize the performance of both models. Since the goal of tuning was not only to minimize Mean Absolute Percentage Error but balance that with the ability to recognize uncertainty, the process was very manual. Tables~\ref{tab:full_params} and \ref{tab:lim_params} show the selected hyperparameters for the full and limited models respectively.\\
         
@@ -129,6 +133,7 @@ This allowed for quick training of models, as with the relatively small amount o
         \end{center}
         \end{table}
     
+    \pagebreak
     \subsubsection{Loss function}\label{sec:loss_function}
     The loss function used for Temporal Fusion Transformers is quantile loss, as it's an integral part of generating the confidence intervals of the model \cite{lim_temporal_2020}.
     A model's prediction is a random value within a probability distribution \cite{wen_multi-horizon_2018}. If we make multiple predictions we can estimate this probability distribution by seeing within what range a selected proportion of the predictions fall \cite{koenker_quantile_2001}. PyTorch Forecasting's quantile loss function takes the Mean Absolute Error (MAE) of three quantiles, 90\%, 50\% and 10\%. This gives a good picture of the model's confidence in a prediction. A smaller quantile range indicates more confidence.

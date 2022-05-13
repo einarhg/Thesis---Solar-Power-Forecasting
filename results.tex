@@ -60,7 +60,9 @@ Figure~\ref{fig:full_med_best} shows examples of good predictions with high conf
 }
 
 In Figure~\ref{fig:full_med_med} we see examples of days where the model achieves higher error, MAPE in the range 19-35\%, but with generally larger 90\% confidence intervals so the model still keeps the measured values close to or within them.
-\begin{figure}[ht!]
+
+\afterpage{%
+\begin{figure}
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_m_1.png}}\qquad
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_m_2.png}}\qquad
@@ -70,9 +72,13 @@ In Figure~\ref{fig:full_med_med} we see examples of days where the model achieve
     \caption{Examples of days with some drops in irradiance, where the model performs somewhat well.
     \label{fig:full_med_med}}
 \end{figure}
+\clearpage
+}
 
 For a few medium variance days, the model does not track well. Figures~\ref{fig:full_med_bad_a} and \ref{fig:full_med_bad_d} show where the model predicts a constant lower irradiance when half the day had high irradiance and the other half low. Figures~\ref{fig:full_med_bad_b} and \ref{fig:full_med_bad_c} show the model predicting a mostly or fully sunny day when it wasn't. In all of these cases, the observed irradiance is far outside the 90\% confidence interval.
-\begin{figure}[ht!]
+
+\afterpage{%
+\begin{figure}
     \centering
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_b_1.png}\label{fig:full_med_bad_a}}\qquad
     \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/full/medium/med_b_2.png}\label{fig:full_med_bad_b}}\qquad
@@ -81,6 +87,8 @@ For a few medium variance days, the model does not track well. Figures~\ref{fig:
     \caption{Examples of days with some drops in irradiance, where the model performs badly.
     \label{fig:full_med_bad}}
 \end{figure}
+\clearpage
+}
 
 \clearpage
 \subsection{High variance days}
