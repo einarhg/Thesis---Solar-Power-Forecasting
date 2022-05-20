@@ -69,12 +69,16 @@ Transformers have been used for some time in Natural Language Processing (NLP) a
 \subsection{Encoder/decoder}
 Transformers have an encoder/decoder structure, depicted in Figure~\ref{fig:encoder_decoder}. An encoder takes an input sequence and generates an abstract hidden state which the decoder then uses to generate an output sequence \cite{vaswani_attention_2017}. A major advantage of this methodology is that the inputs and outputs do not have to have the same length, whereas the primary limit of the architecture is that all information in the input sequence needs to be represented by a single vector for the decoder to decode. The encoder distils the input down to a much smaller representation, a bottleneck, only containing desired information which the decoder in turn extracts. This is on its own used for tasks like de-noising or colourizing images \cite{nechu_what_2020}. 
 
+\vspace{1cm}
+
 \begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.5]{imgs/encoder_decoder.jpeg}
     \caption{The encoder/decoder structure \cite{nechu_what_2020}.
     \label{fig:encoder_decoder}}
 \end{figure}
+
+\vspace{1cm}
 
 \subsection{Positional encoding}
 Unlike RNNs, the transformer architecture has no recurrence, or cell-based memory, and does not inherently track the order of the input data, so positional information has to be injected into the network input for the model to be able to use the positional context of the data.\cite{vaswani_attention_2017}

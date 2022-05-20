@@ -133,19 +133,16 @@ The model predicts most clear days with relatively high accuracy, but even on th
 \subsection{Medium variance days}
 The model shows less accuracy when the irradiance is not steady. Predictions for most days have the smooth profile of an optimal day but are scaled to fit closer to the lower total irradiance for the day. The model is inconsistent in how well it tracks the observed irradiance and the confidence it does that with. Sometimes, as shown in Figure~\ref{fig:less_med_a} the model tracks relatively well, with the observations mostly within the rather tight 90\% confidence interval of roughly $+50/-150 W/m^2$. In Figure~\ref{fig:less_med_b} we see an example where the model is wrong with very high confidence for the first half of the day. Figure~\ref{fig:less_med_c} shows the opposite, the model predicts low irradiance for the whole day with a very large 90\% confidence interval of roughly $\pm200 W/m^2$.
 
-\afterpage{%
-\vspace{5cm}
-\begin{figure}
+
+\begin{figure}[ht!]
     \centering
-    \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_g_1.png}\label{fig:less_med_a}}\qquad}
-    \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_2.png}\label{fig:less_med_b}}\qquad}
-    \makebox[\textwidth][c]{\subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_1.png}\label{fig:less_med_c}}\qquad
-    }
+    \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_g_1.png}\label{fig:less_med_a}}\qquad
+    \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_2.png}\label{fig:less_med_b}}\qquad
+    \subfloat[]{\includegraphics[scale=0.5]{imgs/graphs/less/medium/med_m_1.png}\label{fig:less_med_c}}\qquad
     \caption{Examples of days with some drops in irradiance.
     \label{fig:less_med}}
 \end{figure}
-\clearpage
-}
+
 
 \clearpage
 \subsection{High variance days}
